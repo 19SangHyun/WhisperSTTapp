@@ -214,5 +214,8 @@ def upload_and_clovatranscribe(request):
     return render(request, 'fileupload/clova_file_upload.html', {'form': form})
 
 
+def post_list(request):
+    return render(request, 'fileupload/post_list.html', {})
+
 
 
