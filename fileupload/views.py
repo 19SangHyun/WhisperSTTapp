@@ -14,7 +14,9 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
-with open('secrets.json') as f:
+
+secrets_file_path = os.path.join(settings.BASE_DIR, 'secrets.json')
+with open(secrets_file_path) as f:
   secrets = json.load(f)
 
 SECRET_KEY = secrets["SECRET_KEY"]
