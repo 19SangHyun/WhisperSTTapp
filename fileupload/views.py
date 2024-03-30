@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
-from .forms import FileUploadForm
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from .forms import UploadFileForm
 from .models import FileUpload
-<<<<<<< HEAD
 from openai import OpenAI
 import os
 from django.conf import settings
@@ -213,26 +215,4 @@ def upload_and_clovatranscribe(request):
 
 
 
-=======
-
-def fileUpload(request):
-    if request.method == 'POST':
-        title = request.POST['title']
-        content = request.POST['content']
-        aud = request.FILES["audiofile"]
-        fileupload = FileUpload(
-            title=title,
-            content=content,
-            audiofile=aud,
-        )
-        fileupload.save()
-        return redirect('fileupload')
-    else:
-        fileuploadForm = FileUploadForm
-        context = {
-            'fileuploadForm': fileuploadForm,
-        }
-        return render(request, 'fileupload/file_upload.html', context)
-    #return render(request, 'fileupload/file_upload.html', {})
->>>>>>> parent of 1e8c662 (whisper api on app)
 
